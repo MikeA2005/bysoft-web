@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BySoft | Ingeniería de Software, Soluciones Tecnológicas & Procesos BPMN</title>
+    <meta name="description"
+        content="Firma de ingeniería de software en Barranquilla. Desarrollo a la medida, arquitectura web y estandarización de procesos BPMN y SOP.">
+
+    <!-- Tailwind CSS CDN + Configuración de Marca -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        brand: ['"Chakra Petch"', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        bysoft: {
+                            950: '#050d1a',
+                            900: '#0a192f',
+                            800: '#112240',
+                            700: '#1d3557',
+                            600: '#2563eb',
+                            500: '#3b82f6',
+                            400: '#38bdf8',
+                            300: '#7dd3fc',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts: Chakra Petch (Brand), Plus Jakarta Sans (UI) & JetBrains Mono (Technical) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Google Material Symbols Outlined -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Hojas de Estilo Modulares (Para entorno local / WSL) -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Estilos Críticos de Respaldo para Previsualización Directa -->
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+            line-height: 1;
+        }
+
+        .bg-engineering-grid {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+        }
+
+        .logo-glow {
+            filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.22));
+        }
+    </style>
+</head>
+
+<body
+    class="bg-slate-50 text-slate-900 dark:bg-bysoft-950 dark:text-slate-100 font-sans antialiased selection:bg-sky-400 selection:text-bysoft-950 transition-colors duration-300">
+
+    <svg width="0" height="0" class="hidden" aria-hidden="true">
+        <defs>
+            <linearGradient id="cubeTop" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#bae6fd" />
+                <stop offset="50%" stop-color="#38bdf8" />
+                <stop offset="100%" stop-color="#0284c7" />
+            </linearGradient>
+            <linearGradient id="cubeLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1e4b7a" />
+                <stop offset="100%" stop-color="#0f294a" />
+            </linearGradient>
+            <linearGradient id="cubeRight" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#0f294a" />
+                <stop offset="100%" stop-color="#071529" />
+            </linearGradient>
+            <linearGradient id="pipeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#e0f2fe" />
+                <stop offset="50%" stop-color="#38bdf8" />
+                <stop offset="100%" stop-color="#1e3a8a" />
+            </linearGradient>
+            <linearGradient id="shieldTrace" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8" />
+                <stop offset="50%" stop-color="#2563eb" />
+                <stop offset="100%" stop-color="#0f294a" />
+            </linearGradient>
+
+            <g id="iso-cube">
+                <polygon points="0,-24 21,-12 21,12 0,24 -21,12 -21,-12" fill="#09192f" stroke="#38bdf8"
+                    stroke-width="1.5" stroke-linejoin="round" />
+                <polygon points="0,-21 18,-10.5 0,0 -18,-10.5" fill="url(#cubeTop)" />
+                <polygon points="-18,-10.5 0,0 0,21 -18,10.5" fill="url(#cubeLeft)" />
+                <polygon points="0,0 18,-10.5 18,10.5 0,21" fill="url(#cubeRight)" />
+                <polyline points="-15,-10.5 0,-2 15,-10.5" fill="none" stroke="#e0f2fe" stroke-width="1.2"
+                    opacity="0.7" />
+            </g>
+
+            <!-- BySoft Isometric Shield Symbol (Matches icono.jpg) -->
+            <symbol id="bysoft-emblem" viewBox="0 0 260 280">
+                <g stroke="url(#shieldTrace)" stroke-width="4.5" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M 105,22 L 42,58 L 42,120 L 28,132 L 42,144 L 42,205 L 105,244" />
+                    <path d="M 108,38 L 56,68 L 56,115 L 48,123" stroke-width="3.2" opacity="0.85" />
+                    <path d="M 56,152 L 56,196 L 130,242" stroke-width="3.5" />
+                </g>
+                <g stroke="url(#shieldTrace)" stroke-width="4.5" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M 155,22 L 218,58 L 218,120 L 232,132 L 218,144 L 218,205 L 155,244" />
+                    <path d="M 152,38 L 204,68 L 204,115 L 212,123" stroke-width="3.2" opacity="0.85" />
+                    <path d="M 204,152 L 204,196 L 130,242" stroke-width="3.5" />
+                </g>
+                <g fill="#0a192f" stroke="#38bdf8" stroke-width="3.5">
+                    <circle cx="105" cy="22" r="5.5" />
+                    <circle cx="155" cy="22" r="5.5" />
+                    <circle cx="108" cy="38" r="4.5" />
+                    <circle cx="152" cy="38" r="4.5" />
+                    <circle cx="28" cy="132" r="5.5" />
+                    <circle cx="232" cy="132" r="5.5" />
+                    <circle cx="58" cy="132" r="4.5" />
+                    <circle cx="202" cy="132" r="4.5" />
+                    <circle cx="105" cy="244" r="5.5" />
+                    <circle cx="155" cy="244" r="5.5" />
+                </g>
+                <g stroke="url(#pipeGrad)" stroke-width="9" stroke-linecap="round">
+                    <line x1="130" y1="68" x2="82" y2="96" />
+                    <line x1="130" y1="68" x2="178" y2="96" />
+                    <line x1="82" y1="96" x2="82" y2="165" />
+                    <line x1="82" y1="165" x2="130" y2="195" />
+                </g>
+                <use href="#iso-cube" x="130" y="64" />
+                <use href="#iso-cube" x="180" y="94" />
+                <use href="#iso-cube" x="80" y="164" />
+                <g stroke="url(#pipeGrad)" stroke-width="10" stroke-linecap="round">
+                    <line x1="80" y1="94" x2="130" y2="128" />
+                    <line x1="130" y1="128" x2="180" y2="164" />
+                    <line x1="180" y1="164" x2="130" y2="198" />
+                </g>
+                <use href="#iso-cube" x="80" y="94" />
+                <use href="#iso-cube" x="130" y="129" />
+                <use href="#iso-cube" x="180" y="164" />
+                <use href="#iso-cube" x="130" y="198" />
+                <path d="M 80,88 L 180,152 L 180,170 L 130,204" fill="none" stroke="#38bdf8" stroke-width="3"
+                    opacity="0.65" stroke-linecap="round" />
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Top Institutional Bar -->
+    <div class="bg-bysoft-900 text-slate-300 border-b border-slate-800 text-xs py-2.5 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-6 flex-wrap">
+                <span class="inline-flex items-center gap-1.5 font-medium text-slate-200">
+                    <span class="material-symbols-outlined text-[16px] text-sky-400">location_on</span>
+                    Barranquilla, Atlántico — Atención Presencial y Remota
+                </span>
+                <span class="hidden sm:inline-flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-sky-400">terminal</span>
+                    Ingeniería de Software, Plataformas Web & Procesos BPMN
+                </span>
+            </div>
+            <div class="hidden lg:flex items-center gap-2 font-mono text-[11px] text-sky-400">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>Consultoría Técnica y Levantamiento Operativo</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Header -->
+    <header
+        class="sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-bysoft-950/90 border-b border-slate-200 dark:border-bysoft-800 transition-colors">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
+            aria-label="Navegación Principal">
+            <!-- Brand Identity -->
+            <a href="#inicio" class="flex items-center gap-3.5 group focus:outline-none">
+                <div
+                    class="w-11 h-11 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-700 group-hover:border-sky-400 transition">
+                    <svg class="w-9 h-9 logo-glow">
+                        <use href="#bysoft-emblem"></use>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span
+                        class="font-brand text-2xl tracking-wider font-bold text-slate-900 dark:text-white leading-none">
+                        ByS<span class="text-sky-600 dark:text-sky-400">o</span>ft
+                    </span>
+                    <span
+                        class="text-[10px] font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-1">
+                        Ingeniería & Sistemas
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation (Aligned 1:1 with page structure) -->
+            <div
+                class="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-medium text-slate-600 dark:text-slate-300">
+                <a href="#soluciones"
+                    class="nav-link px-3 py-2 rounded-lg hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-bysoft-900/60 transition">Soluciones</a>
+                <a href="#clientes"
+                    class="nav-link px-3 py-2 rounded-lg hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-bysoft-900/60 transition">Clientes</a>
+                <a href="#casos-exito"
+                    class="nav-link px-3 py-2 rounded-lg hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-bysoft-900/60 transition">Casos
+                    y Demos</a>
+                <a href="#ingenieria-procesos"
+                    class="nav-link px-3 py-2 rounded-lg hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-bysoft-900/60 transition">Procesos
+                    BPMN</a>
+                <a href="#contacto"
+                    class="nav-link px-3 py-2 rounded-lg hover:text-sky-600 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-bysoft-900/60 transition">Contacto</a>
+            </div>
+
+            <!-- Right Controls -->
+            <div class="flex items-center gap-2.5">
+                <button id="theme-toggle" type="button"
+                    class="w-10 h-10 rounded-xl border border-slate-200 dark:border-bysoft-800 bg-slate-100 dark:bg-bysoft-900 text-slate-700 dark:text-slate-200 hover:border-sky-400 flex items-center justify-center transition"
+                    aria-label="Alternar modo de color">
+                    <span class="material-symbols-outlined text-[20px]" id="theme-icon">light_mode</span>
+                </button>
+
+                <a href="#contacto"
+                    class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-xs uppercase tracking-wider bg-sky-600 hover:bg-sky-500 text-white shadow-sm transition">
+                    <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                    <span>Agendar Consultoría</span>
+                </a>
+
+                <button id="mobile-menu-btn" type="button"
+                    class="lg:hidden w-10 h-10 rounded-xl border border-slate-200 dark:border-bysoft-800 bg-slate-100 dark:bg-bysoft-900 text-slate-700 dark:text-slate-200 flex items-center justify-center"
+                    aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú de navegación">
+                    <span class="material-symbols-outlined text-[22px]" id="mobile-menu-icon">menu</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Responsive Mobile Navigation Drawer -->
+        <div id="mobile-menu"
+            class="hidden lg:hidden border-t border-slate-200 dark:border-bysoft-800 bg-white dark:bg-bysoft-950 px-4 pt-3 pb-6 space-y-1 shadow-xl">
+            <a href="#soluciones"
+                class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-bysoft-900">
+                <span class="material-symbols-outlined text-sky-500 text-[20px]">layers</span>
+                <span>Soluciones Tecnológicas</span>
+            </a>
+            <a href="#clientes"
+                class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-bysoft-900">
+                <span class="material-symbols-outlined text-sky-500 text-[20px]">handshake</span>
+                <span>Clientes y Respaldo</span>
+            </a>
+            <a href="#casos-exito"
+                class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-bysoft-900">
+                <span class="material-symbols-outlined text-sky-500 text-[20px]">terminal</span>
+                <span>Casos Reales (OptiMove) y Demos</span>
+            </a>
+            <a href="#ingenieria-procesos"
+                class="mobile-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-bysoft-900">
+                <span class="material-symbols-outlined text-sky-500 text-[20px]">account_tree</span>
+                <span>Ingeniería de Procesos BPMN y SOP</span>
+            </a>
+            <div class="pt-3 mt-2 border-t border-slate-200 dark:border-bysoft-800">
+                <a href="#contacto"
+                    class="mobile-link flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold text-sm bg-sky-600 text-white">
+                    <span class="material-symbols-outlined text-[18px]">chat</span>
+                    <span>Solicitar Diagnóstico</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="inicio"
+        class="relative bg-engineering-grid py-16 lg:py-24 border-b border-slate-200 dark:border-bysoft-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                <!-- Left Column: Comprehensive Engineering Positioning -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-200/80 dark:bg-bysoft-900 border border-slate-300 dark:border-bysoft-700 text-xs font-mono text-slate-700 dark:text-sky-300">
+                        <span class="material-symbols-outlined text-[16px] text-sky-500">memory</span>
+                        <span>Soluciones Integrales en Ingeniería de Software y Tecnología</span>
+                    </div>
+
+                    <h1
+                        class="font-brand text-3xl sm:text-5xl lg:text-[52px] font-bold tracking-tight leading-[1.12] text-slate-900 dark:text-white">
+                        Desarrollamos la Tecnología y la Estructura que tu Empresa Necesita para <span
+                            class="text-sky-600 dark:text-sky-400">Escalar</span>.
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+                        En <strong>BySoft</strong> diseñamos y construimos desde aplicaciones empresariales a la medida,
+                        plataformas web de alto rendimiento e integraciones con IA, hasta la estandarización formal de
+                        tus procesos operativos. Nos adaptamos a la arquitectura y al presupuesto de tu organización.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+                        <a href="#soluciones"
+                            class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm bg-sky-600 hover:bg-sky-500 text-white shadow-sm transition">
+                            <span class="material-symbols-outlined text-[20px]">developer_board</span>
+                            <span>Explorar Ecosistema de Soluciones</span>
+                        </a>
+                        <a href="#casos-exito"
+                            class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm bg-white dark:bg-bysoft-900 text-slate-800 dark:text-slate-100 border border-slate-300 dark:border-bysoft-700 hover:border-sky-400 transition">
+                            <span class="material-symbols-outlined text-[20px] text-sky-500">visibility</span>
+                            <span>Ver Casos en Producción</span>
+                        </a>
+                    </div>
+
+                    <!-- Key Pillars Summary -->
+                    <div
+                        class="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-slate-200 dark:border-bysoft-800 text-xs">
+                        <div class="flex items-start gap-2.5">
+                            <span class="material-symbols-outlined text-sky-500 text-[20px] mt-0.5">code_blocks</span>
+                            <div>
+                                <p class="font-semibold text-slate-900 dark:text-white">Software a la Medida</p>
+                                <p class="text-slate-500 dark:text-slate-400">Sistemas ERP, nómina, inventarios y
+                                    portales corporativos.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                            <span class="material-symbols-outlined text-sky-500 text-[20px] mt-0.5">schema</span>
+                            <div>
+                                <p class="font-semibold text-slate-900 dark:text-white">Procesos BPMN + SOP</p>
+                                <p class="text-slate-500 dark:text-slate-400">Documentación técnica previa a la
+                                    automatización.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-2.5">
+                            <span
+                                class="material-symbols-outlined text-sky-500 text-[20px] mt-0.5">precision_manufacturing</span>
+                            <div>
+                                <p class="font-semibold text-slate-900 dark:text-white">Automatización & IA</p>
+                                <p class="text-slate-500 dark:text-slate-400">Integración de sistemas y flujos
+                                    inteligentes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Clean Architectural Identity Panel -->
+                <div class="lg:col-span-5">
+                    <div
+                        class="rounded-2xl bg-white dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 shadow-xl p-6 sm:p-8">
+                        <div
+                            class="flex items-center justify-between pb-4 mb-6 border-b border-slate-200 dark:border-bysoft-800">
+                            <div class="flex items-center gap-2 font-mono text-xs text-slate-500 dark:text-slate-400">
+                                <span class="material-symbols-outlined text-[16px] text-sky-500">terminal</span>
+                                <span>ARQUITECTURA BYSOFT</span>
+                            </div>
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[11px] font-mono rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                BARRANQUILLA, COL
+                            </span>
+                        </div>
+
+                        <!-- Isometric Shield Presentation -->
+                        <div class="flex flex-col items-center justify-center py-4">
+                            <svg class="w-44 h-44 sm:w-48 sm:h-48 logo-glow" aria-label="Emblema Isométrico BySoft">
+                                <use href="#bysoft-emblem"></use>
+                            </svg>
+                            <div class="mt-3 text-center">
+                                <p class="font-brand text-3xl tracking-widest font-bold text-slate-900 dark:text-white">
+                                    ByS<span class="text-sky-500">o</span>ft
+                                </p>
+                                <p
+                                    class="text-[11px] font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400 mt-0.5">
+                                    Soluciones Tecnológicas Empresariales
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Core Capabilities List -->
+                        <div class="mt-6 space-y-2.5 text-xs">
+                            <div
+                                class="p-3 rounded-xl bg-slate-50 dark:bg-bysoft-950 border border-slate-200 dark:border-bysoft-800 flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="material-symbols-outlined text-sky-500 text-[20px]">database</span>
+                                    <span class="font-medium text-slate-800 dark:text-slate-200">Ingeniería Backend,
+                                        Bases de Datos & APIs</span>
+                                </div>
+                                <span class="font-mono text-[11px] text-sky-600 dark:text-sky-400">Escalabilidad</span>
+                            </div>
+                            <div
+                                class="p-3 rounded-xl bg-slate-50 dark:bg-bysoft-950 border border-slate-200 dark:border-bysoft-800 flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="material-symbols-outlined text-sky-500 text-[20px]">web</span>
+                                    <span class="font-medium text-slate-800 dark:text-slate-200">Plataformas Web
+                                        Comerciales y Corporativas</span>
+                                </div>
+                                <span class="font-mono text-[11px] text-sky-600 dark:text-sky-400">Alto
+                                    Rendimiento</span>
+                            </div>
+                            <div
+                                class="p-3 rounded-xl bg-slate-50 dark:bg-bysoft-950 border border-slate-200 dark:border-bysoft-800 flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <span
+                                        class="material-symbols-outlined text-sky-500 text-[20px]">settings_suggest</span>
+                                    <span class="font-medium text-slate-800 dark:text-slate-200">Automatización, IA &
+                                        Estandarización BPMN</span>
+                                </div>
+                                <span class="font-mono text-[11px] text-sky-600 dark:text-sky-400">Control Total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SOLUCIONES TECNOLÓGICAS INTEGRALES ==================== -->
+    <section id="soluciones"
+        class="py-16 lg:py-24 bg-white dark:bg-bysoft-950 border-b border-slate-200 dark:border-bysoft-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-14">
+                <div
+                    class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-2">
+                    <span class="material-symbols-outlined text-[16px]">hub</span>
+                    <span>Alcance Tecnológico Completo</span>
+                </div>
+                <h2 class="font-brand text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
+                    Soluciones de Ingeniería a la Medida de cada Requerimiento
+                </h2>
+                <p class="mt-3 text-slate-600 dark:text-slate-300 leading-relaxed">
+                    No encasillamos a tu empresa en un único producto. Analizamos tu necesidad técnica y operativa para
+                    construir exactamente la solución que genere retorno de inversión.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Pillar 1 -->
+                <div
+                    class="rounded-2xl bg-slate-50 dark:bg-bysoft-900/70 border border-slate-200 dark:border-bysoft-800 p-6 flex flex-col justify-between hover:border-sky-500/60 transition">
+                    <div>
+                        <div
+                            class="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 mb-5">
+                            <span class="material-symbols-outlined text-[24px]">deployed_code</span>
+                        </div>
+                        <h3 class="font-brand text-xl font-bold text-slate-900 dark:text-white mb-2">
+                            1. Software Empresarial a la Medida
+                        </h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                            Desarrollo desde cero de aplicaciones web, sistemas de gestión interna (ERP/CRM),
+                            plataformas de nómina como <strong>OptiMove</strong>, control de inventarios y facturación
+                            interna.
+                        </p>
+                    </div>
+                    <span
+                        class="text-xs font-mono text-sky-600 dark:text-sky-400 pt-3 border-t border-slate-200 dark:border-bysoft-800">
+                        Arquitectura Escalable & Segura
+                    </span>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div
+                    class="rounded-2xl bg-slate-50 dark:bg-bysoft-900/70 border border-slate-200 dark:border-bysoft-800 p-6 flex flex-col justify-between hover:border-sky-500/60 transition">
+                    <div>
+                        <div
+                            class="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 mb-5">
+                            <span class="material-symbols-outlined text-[24px]">devices</span>
+                        </div>
+                        <h3 class="font-brand text-xl font-bold text-slate-900 dark:text-white mb-2">
+                            2. Plataformas Web & E-Commerce Directo
+                        </h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                            Sitios corporativos e institucionales, catálogos interactivos de carga ultrarrápida y
+                            sistemas de pedidos conectados a WhatsApp sin pagar comisiones a terceros.
+                        </p>
+                    </div>
+                    <span
+                        class="text-xs font-mono text-sky-600 dark:text-sky-400 pt-3 border-t border-slate-200 dark:border-bysoft-800">
+                        Optimización Móvil & SEO Local
+                    </span>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div
+                    class="rounded-2xl bg-slate-50 dark:bg-bysoft-900/70 border border-slate-200 dark:border-bysoft-800 p-6 flex flex-col justify-between hover:border-sky-500/60 transition">
+                    <div>
+                        <div
+                            class="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 mb-5">
+                            <span class="material-symbols-outlined text-[24px]">account_tree</span>
+                        </div>
+                        <h3 class="font-brand text-xl font-bold text-slate-900 dark:text-white mb-2">
+                            3. Ingeniería de Procesos (BPMN + SOP)
+                        </h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                            Levantamiento estructurado para PYMES y negocios operativos. Entregamos mapas de procesos en
+                            estándar BPMN y Procedimientos Operativos Estandarizados (SOP).
+                        </p>
+                    </div>
+                    <span
+                        class="text-xs font-mono text-sky-600 dark:text-sky-400 pt-3 border-t border-slate-200 dark:border-bysoft-800">
+                        Base para Automatización e IA
+                    </span>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div
+                    class="rounded-2xl bg-slate-50 dark:bg-bysoft-900/70 border border-slate-200 dark:border-bysoft-800 p-6 flex flex-col justify-between hover:border-sky-500/60 transition">
+                    <div>
+                        <div
+                            class="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 mb-5">
+                            <span class="material-symbols-outlined text-[24px]">precision_manufacturing</span>
+                        </div>
+                        <h3 class="font-brand text-xl font-bold text-slate-900 dark:text-white mb-2">
+                            4. Automatización & Integración con IA
+                        </h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                            Conexión entre tus herramientas actuales, automatización de tareas operativas repetitivas,
+                            despliegues en la nube y agentes de inteligencia artificial.
+                        </p>
+                    </div>
+                    <span
+                        class="text-xs font-mono text-sky-600 dark:text-sky-400 pt-3 border-t border-slate-200 dark:border-bysoft-800">
+                        Eficiencia Operativa
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECCIÓN DE CLIENTES (SLIDER INTERACTIVO CON LOGOS) ==================== -->
+    <section id="clientes"
+        class="py-16 lg:py-24 bg-slate-100/70 dark:bg-bysoft-900/40 border-b border-slate-200 dark:border-bysoft-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <div
+                        class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-2">
+                        <span class="material-symbols-outlined text-[16px]">verified</span>
+                        <span>Trayectoria y Respaldo Real</span>
+                    </div>
+                    <h2 class="font-brand text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
+                        Empresas y Proyectos que Confían en <span class="text-sky-500">BySoft</span>
+                    </h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400 max-w-2xl">
+                        Soluciones desplegadas en sectores de gestión empresarial, salud visual, organizaciones
+                        institucionales y operaciones técnicas.
+                    </p>
+                </div>
+
+                <!-- Slider Navigation Controls -->
+                <div class="flex items-center gap-2.5 self-start md:self-end">
+                    <button id="slider-prev" type="button"
+                        class="w-10 h-10 rounded-xl border border-slate-300 dark:border-bysoft-700 bg-white dark:bg-bysoft-900 hover:border-sky-400 text-slate-700 dark:text-slate-200 flex items-center justify-center transition"
+                        aria-label="Anterior cliente">
+                        <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+                    </button>
+                    <button id="slider-pause" type="button"
+                        class="px-3.5 h-10 rounded-xl border border-slate-300 dark:border-bysoft-700 bg-white dark:bg-bysoft-900 hover:border-sky-400 text-xs font-mono text-slate-600 dark:text-slate-300 flex items-center gap-1.5 transition"
+                        aria-label="Pausar o reanudar carrusel">
+                        <span class="material-symbols-outlined text-[18px]" id="pause-icon">pause</span>
+                        <span id="pause-text">Auto</span>
+                    </button>
+                    <button id="slider-next" type="button"
+                        class="w-10 h-10 rounded-xl border border-slate-300 dark:border-bysoft-700 bg-white dark:bg-bysoft-900 hover:border-sky-400 text-slate-700 dark:text-slate-200 flex items-center justify-center transition"
+                        aria-label="Siguiente cliente">
+                        <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Carousel Viewport -->
+            <div class="relative overflow-hidden rounded-2xl" id="client-carousel-viewport">
+                <div id="client-carousel-track" class="flex transition-transform duration-500 ease-out">
+
+                    <!-- Slide 1: OptiMove -->
+                    <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3">
+                        <article
+                            class="h-full rounded-2xl bg-white dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 hover:border-sky-500/60 p-6 flex flex-col justify-between transition shadow-sm">
+                            <div>
+                                <div
+                                    class="flex items-center justify-between gap-4 pb-5 mb-5 border-b border-slate-200 dark:border-bysoft-800">
+                                    <div class="flex items-center gap-3.5">
+                                        <!-- Vector Emblem: OptiMove -->
+                                        <div
+                                            class="w-14 h-14 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center shrink-0">
+                                            <svg class="w-8 h-8 text-sky-500" viewBox="0 0 48 48" fill="none"
+                                                stroke="currentColor" stroke-width="3">
+                                                <rect x="6" y="8" width="36" height="32" rx="4" />
+                                                <path d="M14 20 H34 M14 28 H24" stroke-linecap="round" />
+                                                <circle cx="33" cy="28" r="3" fill="currentColor" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-brand text-xl font-bold text-slate-900 dark:text-white">
+                                                OptiMove</h3>
+                                            <span class="text-xs font-mono text-sky-600 dark:text-sky-400">Sistema
+                                                Integral de Nómina</span>
+                                        </div>
+                                    </div>
+                                    <span
+                                        class="px-2.5 py-1 text-[11px] font-mono rounded bg-slate-100 dark:bg-bysoft-800 text-slate-700 dark:text-slate-300">
+                                        Software a Medida
+                                    </span>
+                                </div>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                                    Plataforma empresarial completa para gestión de empleados, liquidación de periodos,
+                                    novedades, horas extra, seguridad social, prestaciones y dispersión de colillas.
+                                </p>
+                            </div>
+                            <div
+                                class="pt-4 border-t border-slate-100 dark:border-bysoft-800/80 flex items-center justify-between text-xs">
+                                <span class="font-mono text-slate-500 dark:text-slate-400">Arquitectura
+                                    Full-Stack</span>
+                                <a href="#casos-exito" onclick="switchPortfolioTab('casos')"
+                                    class="font-semibold text-sky-600 dark:text-sky-400 hover:underline inline-flex items-center gap-1">
+                                    <span>Ver alcance técnico</span>
+                                    <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Slide 2: Ópticas Pracso -->
+                    <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3">
+                        <article
+                            class="h-full rounded-2xl bg-white dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 hover:border-sky-500/60 p-6 flex flex-col justify-between transition shadow-sm">
+                            <div>
+                                <div
+                                    class="flex items-center justify-between gap-4 pb-5 mb-5 border-b border-slate-200 dark:border-bysoft-800">
+                                    <div class="flex items-center gap-3.5">
+                                        <!-- Vector Emblem: Ópticas Pracso -->
+                                        <div
+                                            class="w-14 h-14 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center shrink-0">
+                                            <svg class="w-9 h-9 text-sky-500" viewBox="0 0 64 64" fill="none"
+                                                stroke="currentColor" stroke-width="3.5">
+                                                <circle cx="18" cy="34" r="11" />
+                                                <circle cx="46" cy="34" r="11" />
+                                                <path d="M29 32 C31 29, 33 29, 35 32" stroke-linecap="round" />
+                                                <path d="M7 32 L3 28 M57 32 L61 28" stroke-linecap="round" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-brand text-xl font-bold text-slate-900 dark:text-white">
+                                                Ópticas Pracso</h3>
+                                            <span class="text-xs font-mono text-sky-600 dark:text-sky-400">Salud Visual
+                                                & Catálogo</span>
+                                        </div>
+                                    </div>
+                                    <span
+                                        class="px-2.5 py-1 text-[11px] font-mono rounded bg-slate-100 dark:bg-bysoft-800 text-slate-700 dark:text-slate-300">
+                                        Web Comercial
+                                    </span>
+                                </div>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                                    Ecosistema comercial optimizado para dispositivos móviles con exhibición de
+                                    monturas, filtros por categoría y agendamiento directo de consultas de optometría.
+                                </p>
+                            </div>
+                            <div
+                                class="pt-4 border-t border-slate-100 dark:border-bysoft-800/80 flex items-center justify-between text-xs">
+                                <span class="font-mono text-slate-500 dark:text-slate-400">Carga &lt; 1.2s</span>
+                                <a href="#casos-exito" onclick="switchPortfolioTab('casos')"
+                                    class="font-semibold text-sky-600 dark:text-sky-400 hover:underline inline-flex items-center gap-1">
+                                    <span>Inspeccionar caso</span>
+                                    <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Slide 3: Iglesia Es Mi Casa -->
+                    <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-3">
+                        <article
+                            class="h-full rounded-2xl bg-white dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 hover:border-sky-500/60 p-6 flex flex-col justify-between transition shadow-sm">
+                            <div>
+                                <div
+                                    class="flex items-center justify-between gap-4 pb-5 mb-5 border-b border-slate-200 dark:border-bysoft-800">
+                                    <div class="flex items-center gap-3.5">
+                                        <!-- Vector Emblem: Iglesia Es Mi Casa -->
+                                        <div
+                                            class="w-14 h-14 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center shrink-0">
+                                            <svg class="w-9 h-9 text-sky-500" viewBox="0 0 64 64" fill="none"
+                                                stroke="currentColor" stroke-width="3.5">
+                                                <path d="M10 30 L32 12 L54 30" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M16 26 V52 H48 V26" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M32 22 V38 M26 28 H38" stroke-linecap="round" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-brand text-xl font-bold text-slate-900 dark:text-white">
+                                                Iglesia Es Mi Casa</h3>
+                                            <span class="text-xs font-mono text-sky-600 dark:text-sky-400">Portal
+                                                Institucional</span>
+                                        </div>
+                                    </div>
+                                    <span
+                                        class="px-2.5 py-1 text-[11px] font-mono rounded bg-slate-100 dark:bg-bysoft-800 text-slate-700 dark:text-slate-300">
+                                        Corporativo
+                                    </span>
+                                </div>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                                    Plataforma institucional para centralizar horarios de servicios, grupos de conexión
+                                    comunitaria, geolocalización de sede y formularios seguros de atención.
+                                </p>
+                            </div>
+                            <div
+                                class="pt-4 border-t border-slate-100 dark:border-bysoft-800/80 flex items-center justify-between text-xs">
+                                <span class="font-mono text-slate-500 dark:text-slate-400">Diseño Accesible</span>
+                                <a href="#casos-exito" onclick="switchPortfolioTab('casos')"
+                                    class="font-semibold text-sky-600 dark:text-sky-400 hover:underline inline-flex items-center gap-1">
+                                    <span>Inspeccionar caso</span>
+                                    <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Indicators -->
+            <div id="slider-dots" class="flex items-center justify-center gap-2 mt-6"
+                aria-label="Indicadores de posición"></div>
+        </div>
+    </section>
+
+    <!-- ==================== CASOS DE ÉXITO Y LABORATORIO DEMO ==================== -->
+    <section id="casos-exito"
+        class="py-16 lg:py-24 bg-white dark:bg-bysoft-950 border-b border-slate-200 dark:border-bysoft-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <div
+                        class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-2">
+                        <span class="material-symbols-outlined text-[16px]">workspace_premium</span>
+                        <span>Ingeniería Comprobable</span>
+                    </div>
+                    <h2 class="font-brand text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
+                        Sistemas en Producción & <span class="text-sky-500">Herramientas Interactivas</span>
+                    </h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400 max-w-2xl">
+                        Conoce el alcance completo de nuestros desarrollos empresariales o utiliza nuestras calculadoras
+                        interactivas de retorno comercial.
+                    </p>
+                </div>
+
+                <!-- Tab Switcher -->
+                <div
+                    class="inline-flex p-1.5 rounded-xl bg-slate-100 dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 self-start">
+                    <button id="tab-btn-casos" type="button" onclick="switchPortfolioTab('casos')"
+                        class="px-4 py-2.5 rounded-lg font-brand font-bold text-xs uppercase tracking-wider transition bg-sky-600 text-white shadow-sm flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">folder_managed</span>
+                        <span>Casos Reales</span>
+                    </button>
+                    <button id="tab-btn-demos" type="button" onclick="switchPortfolioTab('demos')"
+                        class="px-4 py-2.5 rounded-lg font-brand font-bold text-xs uppercase tracking-wider transition text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">science</span>
+                        <span>Demos Comerciales</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB 1: CASOS REALES (OptiMove Full Suite + Ópticas Pracso + Iglesia Es Mi Casa) -->
+            <div id="tab-content-casos" class="space-y-10">
+
+                <!-- Featured Case: Sistema de Nómina en OptiMove -->
+                <div
+                    class="rounded-2xl bg-slate-50 dark:bg-bysoft-900/60 border border-slate-200 dark:border-bysoft-800 overflow-hidden shadow-lg">
+                    <div class="grid grid-cols-1 lg:grid-cols-12">
+
+                        <!-- Left 6 Cols: Full System Scope of OptiMove -->
+                        <div
+                            class="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-bysoft-800">
+                            <div>
+                                <div class="flex flex-wrap items-center gap-2 mb-4">
+                                    <span
+                                        class="px-3 py-1 rounded-md text-xs font-mono bg-sky-500/15 text-sky-600 dark:text-sky-300 border border-sky-500/30">
+                                        Software Empresarial a la Medida
+                                    </span>
+                                    <span
+                                        class="px-3 py-1 rounded-md text-xs font-mono bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                                        Caso OptiMove
+                                    </span>
+                                </div>
+
+                                <h3
+                                    class="font-brand text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-3">
+                                    Sistema Integral de Nómina & Gestión Laboral (OptiMove)
+                                </h3>
+
+                                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                                    Más allá de una calculadora aislada, para <strong>OptiMove</strong> diseñamos e
+                                    implementamos una arquitectura completa de gestión de capital humano y liquidación
+                                    contable bajo la legislación laboral colombiana.
+                                </p>
+
+                                <!-- Modules Grid showing comprehensive scope -->
+                                <h4
+                                    class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
+                                    Módulos del Ecosistema Desarrollado:
+                                </h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                                    <div
+                                        class="p-3 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-200 dark:border-bysoft-800 flex items-start gap-2.5">
+                                        <span
+                                            class="material-symbols-outlined text-sky-500 text-[20px] mt-0.5">badge</span>
+                                        <div>
+                                            <p class="text-xs font-bold text-slate-900 dark:text-white">Gestión de
+                                                Empleados y Contratos</p>
+                                            <p class="text-[11px] text-slate-500 dark:text-slate-400">Cargos, centros de
+                                                costo, tipos de salario y afiliaciones (EPS, AFP, ARL, Caja).</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="p-3 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-200 dark:border-bysoft-800 flex items-start gap-2.5">
+                                        <span
+                                            class="material-symbols-outlined text-sky-500 text-[20px] mt-0.5">event_note</span>
+                                        <div>
+                                            <p class="text-xs font-bold text-slate-900 dark:text-white">Control de
+                                                Novedades y Turnos</p>
+                                            <p class="text-[11px] text-slate-500 dark:text-slate-400">Incapacidades,
+                                                licencias, vacaciones, préstamos, anticipos y recargos.</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="p-3 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-200 dark:border-bysoft-800 flex items-start gap-2.5">
+                                        <span
+                                            class="material-symbols-outlined text-sky-500 text-[20px] mt-0.5">account_balance</span>
+                                        <div>
+                                            <p class="text-xs font-bold text-slate-900 dark:text-white">Seguridad Social
+                                                y Provisiones</p>
+                                            <p class="text-[11px] text-slate-500 dark:text-slate-400">Consolidación
+                                                automática de PILA, parafiscales, prima, cesantías e intereses.</p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="p-3 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-200 dark:border-bysoft-800 flex items-start gap-2.5">
+                                        <span
+                                            class="material-symbols-outlined text-sky-500 text-[20px] mt-0.5">receipt_long</span>
+                                        <div>
+                                            <p class="text-xs font-bold text-slate-900 dark:text-white">Cierre
+                                                Quincenal/Mensual y Colillas</p>
+                                            <p class="text-[11px] text-slate-500 dark:text-slate-400">Histórico
+                                                auditable, exportación contable y desprendibles de pago en PDF.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="p-3.5 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-between text-xs">
+                                <span class="text-slate-700 dark:text-slate-200 font-medium">¿Necesitas un sistema
+                                    administrativo o ERP con este nivel de rigor?</span>
+                                <a href="#contacto" onclick="selectServiceInForm('Desarrollo de Software a la Medida')"
+                                    class="font-bold text-sky-600 dark:text-sky-400 hover:underline shrink-0 ml-2">Cotizar
+                                    Arquitectura</a>
+                            </div>
+                        </div>
+
+                        <!-- Right 6 Cols: Interactive Calculation Engine Sample -->
+                        <div class="lg:col-span-6 p-6 sm:p-8 bg-white dark:bg-bysoft-950 flex flex-col justify-between">
+                            <div>
+                                <div
+                                    class="flex items-center justify-between pb-4 mb-6 border-b border-slate-200 dark:border-bysoft-800">
+                                    <div>
+                                        <span class="text-[11px] font-mono uppercase text-sky-500 block">Módulo
+                                            Demostrativo (1 de 6 Módulos)</span>
+                                        <h4 class="font-brand text-lg font-bold text-slate-900 dark:text-white">
+                                            Prueba del Motor Matemático de Liquidación
+                                        </h4>
+                                    </div>
+                                    <span
+                                        class="px-2.5 py-1 text-[11px] font-mono rounded bg-slate-100 dark:bg-bysoft-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-bysoft-800">
+                                        Normativa CO
+                                    </span>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
+                                    <div>
+                                        <label for="nomina-salario"
+                                            class="block text-xs font-mono uppercase text-slate-600 dark:text-slate-400 mb-2">
+                                            Salario Base Mensual (COP)
+                                        </label>
+                                        <input id="nomina-salario" type="number" value="1800000" min="1300000"
+                                            step="50000" oninput="calcularNominaDemo()"
+                                            class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-bysoft-900 border border-slate-300 dark:border-bysoft-700 font-mono text-sm font-bold text-slate-900 dark:text-white focus:outline-none focus:border-sky-500">
+                                    </div>
+
+                                    <div>
+                                        <label for="nomina-extras"
+                                            class="block text-xs font-mono uppercase text-slate-600 dark:text-slate-400 mb-2">
+                                            Horas Extra Diurnas (+25%): <span id="nomina-extras-val"
+                                                class="text-sky-500 font-bold">6 hrs</span>
+                                        </label>
+                                        <input id="nomina-extras" type="range" min="0" max="40" value="6"
+                                            oninput="calcularNominaDemo()"
+                                            class="w-full accent-sky-500 cursor-pointer mt-2">
+                                    </div>
+                                </div>
+
+                                <!-- Breakdown Cards -->
+                                <div class="grid grid-cols-2 gap-3 mb-6">
+                                    <div
+                                        class="p-3.5 rounded-xl bg-slate-50 dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800">
+                                        <span
+                                            class="text-[11px] font-mono text-slate-500 dark:text-slate-400 block">Auxilio
+                                            de Transporte</span>
+                                        <span id="out-auxilio"
+                                            class="font-mono text-sm font-bold text-slate-900 dark:text-white">$200.000</span>
+                                    </div>
+                                    <div
+                                        class="p-3.5 rounded-xl bg-slate-50 dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800">
+                                        <span
+                                            class="text-[11px] font-mono text-slate-500 dark:text-slate-400 block">Recargo
+                                            Horas Extra</span>
+                                        <span id="out-extras"
+                                            class="font-mono text-sm font-bold text-emerald-600 dark:text-emerald-400">+$58.696</span>
+                                    </div>
+                                    <div
+                                        class="p-3.5 rounded-xl bg-slate-50 dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800">
+                                        <span
+                                            class="text-[11px] font-mono text-slate-500 dark:text-slate-400 block">Deducción
+                                            Salud y Pensión (8%)</span>
+                                        <span id="out-deducciones"
+                                            class="font-mono text-sm font-bold text-rose-500">-$148.696</span>
+                                    </div>
+                                    <div
+                                        class="p-3.5 rounded-xl bg-slate-50 dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800">
+                                        <span
+                                            class="text-[11px] font-mono text-slate-500 dark:text-slate-400 block">Provisión
+                                            Prestaciones Empresa</span>
+                                        <span id="out-prestaciones"
+                                            class="font-mono text-sm font-bold text-amber-500">$449.413</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Net Payable Output -->
+                            <div
+                                class="p-4 rounded-xl bg-bysoft-900 text-white border border-bysoft-700 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div>
+                                    <span class="text-[11px] font-mono text-sky-400 uppercase block">Neto Liquidado al
+                                        Empleado</span>
+                                    <span class="text-xs text-slate-300">Muestra en tiempo real del núcleo de cálculo de
+                                        OptiMove</span>
+                                </div>
+                                <div id="out-neto" class="font-brand text-2xl sm:text-3xl font-bold text-emerald-400">
+                                    $1.910.000 COP
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Secondary Real Cases Row: Ópticas Pracso & Iglesia Es Mi Casa -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Ópticas Pracso -->
+                    <div
+                        class="rounded-2xl bg-slate-50 dark:bg-bysoft-900/60 border border-slate-200 dark:border-bysoft-800 p-6 sm:p-8 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-4">
+                                <span
+                                    class="px-3 py-1 rounded-md text-xs font-mono bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30">
+                                    Plataforma Comercial • Salud Visual
+                                </span>
+                                <span class="text-xs font-mono text-emerald-500 font-medium">En Producción</span>
+                            </div>
+                            <h3 class="font-brand text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                                Ópticas Pracso — Catálogo & Agendamiento Clínico
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                                Desarrollo web orientado a la conversión para el sector óptico. Incluye vitrina digital
+                                de monturas, optimización de imágenes para carga inferior a 1.2 segundos en redes
+                                móviles y flujo directo para reservar exámenes de optometría por WhatsApp.
+                            </p>
+                        </div>
+                        <div
+                            class="pt-4 border-t border-slate-200 dark:border-bysoft-800 flex items-center justify-between">
+                            <span class="text-xs font-mono text-slate-500 dark:text-slate-400">WordPress Optimizado +
+                                Embudo Directo</span>
+                            <a href="#contacto" onclick="selectServiceInForm('Plataforma Web Comercial / Catálogo')"
+                                class="text-xs font-bold text-sky-600 dark:text-sky-400 hover:underline inline-flex items-center gap-1">
+                                <span>Solicitar solución similar</span>
+                                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Iglesia Es Mi Casa -->
+                    <div
+                        class="rounded-2xl bg-slate-50 dark:bg-bysoft-900/60 border border-slate-200 dark:border-bysoft-800 p-6 sm:p-8 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-4">
+                                <span
+                                    class="px-3 py-1 rounded-md text-xs font-mono bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30">
+                                    Portal Institucional / Comunitario
+                                </span>
+                                <span class="text-xs font-mono text-emerald-500 font-medium">En Producción</span>
+                            </div>
+                            <h3 class="font-brand text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                                Iglesia Es Mi Casa — Ecosistema Institucional
+                            </h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                                Arquitectura de información clara y accesible para gestionar horarios de reuniones,
+                                grupos de conexión, anuncios de eventos, integración con mapas de navegación y recepción
+                                estructurada de peticiones y nuevos miembros.
+                            </p>
+                        </div>
+                        <div
+                            class="pt-4 border-t border-slate-200 dark:border-bysoft-800 flex items-center justify-between">
+                            <span class="text-xs font-mono text-slate-500 dark:text-slate-400">Arquitectura Corporativa
+                                & UX Accesible</span>
+                            <a href="#contacto" onclick="selectServiceInForm('Plataforma Web Comercial / Catálogo')"
+                                class="text-xs font-bold text-sky-600 dark:text-sky-400 hover:underline inline-flex items-center gap-1">
+                                <span>Solicitar solución similar</span>
+                                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TAB 2: DEMOS INTERACTIVOS DE IMPACTO COMERCIAL -->
+            <div id="tab-content-demos" class="hidden space-y-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                    <!-- Demo 1: Calculadora de Ahorro en Comisiones -->
+                    <div
+                        class="rounded-2xl bg-slate-50 dark:bg-bysoft-900/60 border border-slate-200 dark:border-bysoft-800 p-6 sm:p-8">
+                        <div
+                            class="inline-flex items-center gap-1.5 text-xs font-mono text-sky-600 dark:text-sky-400 mb-2">
+                            <span class="material-symbols-outlined text-[16px]">calculate</span>
+                            <span>Demo 01 • Retorno de Inversión</span>
+                        </div>
+                        <h3 class="font-brand text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                            Calculadora de Fuga en Comisiones de Apps
+                        </h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-6">
+                            Visualiza el capital que retiene tu negocio al canalizar pedidos desde tu propia plataforma
+                            web en lugar de ceder entre el 20% y 30% a intermediarios.
+                        </p>
+
+                        <div class="space-y-5">
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1.5">
+                                    <span>Ventas Mensuales por Canal Digital:</span>
+                                    <span id="comm-sales-label" class="font-bold text-sky-500">$10.000.000 COP</span>
+                                </div>
+                                <input id="comm-sales-slider" type="range" min="2000000" max="40000000" step="500000"
+                                    value="10000000" oninput="updateCommissionDemo()"
+                                    class="w-full accent-sky-500 cursor-pointer">
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-mono mb-1.5">
+                                    <span>Comisión Promedio de Plataforma Externa:</span>
+                                    <span id="comm-rate-label" class="font-bold text-rose-500">25%</span>
+                                </div>
+                                <input id="comm-rate-slider" type="range" min="15" max="32" step="1" value="25"
+                                    oninput="updateCommissionDemo()" class="w-full accent-rose-500 cursor-pointer">
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4 pt-2">
+                                <div
+                                    class="p-4 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-200 dark:border-bysoft-800">
+                                    <span class="text-xs font-mono text-slate-500 block">Comisión Cedida al Mes:</span>
+                                    <span id="comm-month-loss"
+                                        class="font-brand text-xl sm:text-2xl font-bold text-rose-500">$2.500.000</span>
+                                </div>
+                                <div
+                                    class="p-4 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-200 dark:border-bysoft-800">
+                                    <span class="text-xs font-mono text-slate-500 block">Capital Retenido al Año:</span>
+                                    <span id="comm-year-save"
+                                        class="font-brand text-xl sm:text-2xl font-bold text-emerald-500">$30.000.000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Demo 2: Simulador de Orden Estructurada a WhatsApp -->
+                    <div
+                        class="rounded-2xl bg-slate-50 dark:bg-bysoft-900/60 border border-slate-200 dark:border-bysoft-800 p-6 sm:p-8">
+                        <div
+                            class="inline-flex items-center gap-1.5 text-xs font-mono text-sky-600 dark:text-sky-400 mb-2">
+                            <span class="material-symbols-outlined text-[16px]">fact_check</span>
+                            <span>Demo 02 • Estandarización Comercial</span>
+                        </div>
+                        <h3 class="font-brand text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                            Simulador de Solicitud Estructurada a WhatsApp
+                        </h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-5">
+                            Reemplaza los audios extensos y mensajes ambiguos por órdenes de servicio o compra
+                            estructuradas listas para facturar y despachar:
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-xs font-mono text-slate-500 mb-1">Servicio / Producto</label>
+                                <select id="wa-sim-item" onchange="updateWaSimulator()"
+                                    class="w-full px-3 py-2.5 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-300 dark:border-bysoft-700 text-xs font-semibold">
+                                    <option value="Mantenimiento Preventivo Industrial|$185.000">Mantenimiento
+                                        Preventivo ($185.000)</option>
+                                    <option value="Montura Antirreflejo + Valoración|$280.000">Montura AR + Valoración
+                                        ($280.000)</option>
+                                    <option value="Pedido Mayorista Ferretería|$640.000">Pedido Mayorista Ferretería
+                                        ($640.000)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-slate-500 mb-1">Ubicación en
+                                    Barranquilla</label>
+                                <select id="wa-sim-zone" onchange="updateWaSimulator()"
+                                    class="w-full px-3 py-2.5 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-300 dark:border-bysoft-700 text-xs font-semibold">
+                                    <option value="Zona Industrial Vía 40">Zona Industrial Vía 40</option>
+                                    <option value="Alto Prado / Norte">Alto Prado / Norte</option>
+                                    <option value="Villa Carolina">Villa Carolina</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div
+                            class="rounded-xl bg-bysoft-950 text-slate-200 p-4 font-mono text-xs border border-bysoft-800">
+                            <div
+                                class="flex items-center justify-between text-sky-400 pb-2 mb-2 border-b border-bysoft-800">
+                                <span>VISTA PREVIA DE TICKET GENERADO</span>
+                                <span>0% COMISIÓN</span>
+                            </div>
+                            <pre id="wa-ticket-preview"
+                                class="whitespace-pre-wrap leading-relaxed text-slate-300"></pre>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== INGENIERÍA DE PROCESOS (BPMN + SOP — METODOLOGÍA INFORMATIVA) ==================== -->
+    <section id="ingenieria-procesos"
+        class="py-16 lg:py-24 bg-slate-100/70 dark:bg-bysoft-900/40 border-b border-slate-200 dark:border-bysoft-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="max-w-3xl mb-14">
+                <div
+                    class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-2">
+                    <span class="material-symbols-outlined text-[16px]">account_tree</span>
+                    <span>Consultoría de Operaciones para PYMES y Negocios Operativos</span>
+                </div>
+                <h2 class="font-brand text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
+                    Estandarización de Procesos <span class="text-sky-500">BPMN y Manuales SOP</span>
+                </h2>
+                <p class="mt-3 text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Automatizar una operación desordenada solo acelera el desorden. Para talleres, distribuidoras,
+                    empresas de mantenimiento e industrias locales, estructuramos formalmente el funcionamiento de tu
+                    empresa antes de implementar inteligencia artificial o software a la medida.
+                </p>
+            </div>
+
+            <!-- 4-Step Consultative Pipeline (Informative Only) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+
+                <!-- Step 1 -->
+                <div
+                    class="rounded-2xl bg-white dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 p-6 relative">
+                    <div class="flex items-center justify-between mb-4">
+                        <span
+                            class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500">
+                            <span class="material-symbols-outlined text-[22px]">quiz</span>
+                        </span>
+                        <span class="font-mono text-xs font-bold text-slate-400">FASE 01</span>
+                    </div>
+                    <h3 class="font-brand text-lg font-bold text-slate-900 dark:text-white mb-2">
+                        Cuestionario de Levantamiento
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Una vez solicitado el servicio, enviamos a tu equipo un cuestionario técnico estructurado para
+                        capturar roles, entradas, salidas, tiempos y cuellos de botella reales sin interrumpir tu
+                        jornada.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div
+                    class="rounded-2xl bg-white dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 p-6 relative">
+                    <div class="flex items-center justify-between mb-4">
+                        <span
+                            class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500">
+                            <span class="material-symbols-outlined text-[22px]">polyline</span>
+                        </span>
+                        <span class="font-mono text-xs font-bold text-slate-400">FASE 02</span>
+                    </div>
+                    <h3 class="font-brand text-lg font-bold text-slate-900 dark:text-white mb-2">
+                        Modelado de Flujos BPMN
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Procesamos la información mediante nuestra arquitectura de ingeniería (OpenCode) para diagramar
+                        bajo notación estándar <strong>BPMN</strong> tus flujos actuales y el diseño operativo
+                        optimizado.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div
+                    class="rounded-2xl bg-white dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 p-6 relative">
+                    <div class="flex items-center justify-between mb-4">
+                        <span
+                            class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500">
+                            <span class="material-symbols-outlined text-[22px]">menu_book</span>
+                        </span>
+                        <span class="font-mono text-xs font-bold text-slate-400">FASE 03</span>
+                    </div>
+                    <h3 class="font-brand text-lg font-bold text-slate-900 dark:text-white mb-2">
+                        Entrega de Mapa y SOP
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Recibes el <strong>Mapa Maestro de Procesos</strong> y los <strong>SOP (Procedimientos
+                            Operativos Estandarizados)</strong> documentados paso a paso para auditar y entrenar a tu
+                        personal.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div
+                    class="rounded-2xl bg-white dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 p-6 relative">
+                    <div class="flex items-center justify-between mb-4">
+                        <span
+                            class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500">
+                            <span class="material-symbols-outlined text-[22px]">precision_manufacturing</span>
+                        </span>
+                        <span class="font-mono text-xs font-bold text-slate-400">FASE 04</span>
+                    </div>
+                    <h3 class="font-brand text-lg font-bold text-slate-900 dark:text-white mb-2">
+                        Automatización, IA y Software
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Con el mapa y los SOP validados, implementamos automatizaciones de tareas repetitivas, agentes
+                        de IA y módulos de software exactos donde generan mayor rentabilidad.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Deliverable Summary Banner -->
+            <div
+                class="rounded-2xl bg-white dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div class="space-y-1.5 max-w-2xl">
+                    <div
+                        class="inline-flex items-center gap-2 text-xs font-mono text-emerald-600 dark:text-emerald-400">
+                        <span class="material-symbols-outlined text-[16px]">task_alt</span>
+                        <span>Servicio Contratable de Forma Independiente o Previo al Desarrollo</span>
+                    </div>
+                    <h3 class="font-brand text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+                        ¿Deseas ordenar primero la operación de tu empresa antes de adquirir software?
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300">
+                        Solicita el servicio de diagnóstico operativo; te enviaremos el formulario de levantamiento
+                        inicial para construir el Mapa BPMN y los manuales SOP de tu negocio.
+                    </p>
+                </div>
+                <a href="#contacto" onclick="selectServiceInForm('Mapeo de Procesos BPMN + Documentación SOP')"
+                    class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm bg-sky-600 hover:bg-sky-500 text-white shrink-0 transition">
+                    <span class="material-symbols-outlined text-[18px]">assignment</span>
+                    <span>Solicitar Cuestionario de Procesos</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== SECCIÓN DE CONTACTO Y SOLICITUD DE SERVICIO ==================== -->
+    <section id="contacto" class="py-16 lg:py-24 bg-white dark:bg-bysoft-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+                <!-- Left Column: Direct Engineering Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div
+                        class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400">
+                        <span class="material-symbols-outlined text-[16px]">contact_page</span>
+                        <span>Contacto Directo</span>
+                    </div>
+                    <h2 class="font-brand text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
+                        Conversemos sobre la Solución que Requiere tu Empresa
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Selecciona la línea de servicio de tu interés. Si solicitas el <strong>Mapeo de Procesos BPMN y
+                            SOP</strong>, te enviaremos el cuestionario inicial de diagnóstico para comenzar el
+                        levantamiento.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div
+                            class="p-4 rounded-xl bg-slate-50 dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 flex items-start gap-3.5">
+                            <span class="material-symbols-outlined text-sky-500 text-[22px] mt-0.5">chat</span>
+                            <div>
+                                <h3 class="font-brand font-bold text-sm text-slate-900 dark:text-white">Atención por
+                                    Ingenieros de Proyecto</h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Comunicación directa vía
+                                    WhatsApp Business, videollamada o reunión presencial en Barranquilla.</p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="p-4 rounded-xl bg-slate-50 dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 flex items-start gap-3.5">
+                            <span class="material-symbols-outlined text-sky-500 text-[22px] mt-0.5">architecture</span>
+                            <div>
+                                <h3 class="font-brand font-bold text-sm text-slate-900 dark:text-white">Propuesta
+                                    Técnica a la Medida</h3>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Definimos el alcance
+                                    técnico, la arquitectura y las condiciones del proyecto de acuerdo con la realidad
+                                    operativa de tu organización.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Clean Consultation Form -->
+                <div class="lg:col-span-7">
+                    <form id="diagnostic-form" onsubmit="handleDiagnosticSubmit(event)"
+                        class="rounded-2xl bg-slate-50 dark:bg-bysoft-900 border border-slate-200 dark:border-bysoft-800 p-6 sm:p-8 shadow-lg space-y-5">
+                        <div
+                            class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-bysoft-800">
+                            <h3 class="font-brand text-xl font-bold text-slate-900 dark:text-white">
+                                Solicitud de Consultoría o Diagnóstico
+                            </h3>
+                            <span class="text-xs font-mono text-slate-500">BySoft Ingeniería</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="client-name"
+                                    class="block text-xs font-mono uppercase text-slate-600 dark:text-slate-300 mb-2">Nombre
+                                    y Cargo *</label>
+                                <input id="client-name" type="text" required placeholder="Ej. Andrés Gómez - Gerente"
+                                    class="w-full px-4 py-3 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-300 dark:border-bysoft-700 text-sm focus:outline-none focus:border-sky-500">
+                            </div>
+                            <div>
+                                <label for="client-company"
+                                    class="block text-xs font-mono uppercase text-slate-600 dark:text-slate-300 mb-2">Empresa
+                                    / Organización *</label>
+                                <input id="client-company" type="text" required placeholder="Nombre de tu empresa"
+                                    class="w-full px-4 py-3 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-300 dark:border-bysoft-700 text-sm focus:outline-none focus:border-sky-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="client-service"
+                                    class="block text-xs font-mono uppercase text-slate-600 dark:text-slate-300 mb-2">Solución
+                                    Requerida *</label>
+                                <select id="client-service"
+                                    class="w-full px-4 py-3 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-300 dark:border-bysoft-700 text-sm focus:outline-none focus:border-sky-500">
+                                    <option value="Desarrollo de Software a la Medida">Desarrollo de Software a la
+                                        Medida (ERP / Nómina / Gestión)</option>
+                                    <option value="Plataforma Web Comercial / Catálogo">Plataforma Web Comercial /
+                                        Corporativa</option>
+                                    <option value="Mapeo de Procesos BPMN + Documentación SOP">Mapeo de Procesos BPMN +
+                                        Documentación SOP</option>
+                                    <option value="Automatización de Procesos e Integración IA">Automatización de
+                                        Procesos e Integración IA</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="client-modality"
+                                    class="block text-xs font-mono uppercase text-slate-600 dark:text-slate-300 mb-2">Modalidad
+                                    de Reunión Preferida</label>
+                                <select id="client-modality"
+                                    class="w-full px-4 py-3 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-300 dark:border-bysoft-700 text-sm focus:outline-none focus:border-sky-500">
+                                    <option value="Reunión presencial en Barranquilla">Reunión presencial (Barranquilla)
+                                    </option>
+                                    <option value="Videollamada ejecutiva">Videollamada ejecutiva</option>
+                                    <option value="Envío de cuestionario / información por WhatsApp">Atención directa y
+                                        envío de cuestionario por WhatsApp</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="client-notes"
+                                class="block text-xs font-mono uppercase text-slate-600 dark:text-slate-300 mb-2">Resumen
+                                del Proyecto o Necesidad</label>
+                            <textarea id="client-notes" rows="3"
+                                placeholder="Cuéntanos brevemente qué deseas implementar, optimizar o desarrollar..."
+                                class="w-full px-4 py-3 rounded-xl bg-white dark:bg-bysoft-950 border border-slate-300 dark:border-bysoft-700 text-sm focus:outline-none focus:border-sky-500"></textarea>
+                        </div>
+
+                        <div id="form-feedback"
+                            class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-700 dark:text-emerald-300">
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                            <button type="submit"
+                                class="flex-1 py-3.5 px-6 rounded-xl font-brand font-bold text-sm bg-sky-600 hover:bg-sky-500 text-white shadow-sm flex items-center justify-center gap-2 transition">
+                                <span class="material-symbols-outlined text-[18px]">send</span>
+                                <span>Enviar Solicitud por WhatsApp</span>
+                            </button>
+                            <button type="button" onclick="copyDiagnosticSummary()"
+                                class="py-3.5 px-5 rounded-xl font-semibold text-xs border border-slate-300 dark:border-bysoft-700 hover:border-sky-400 text-slate-700 dark:text-slate-200 flex items-center justify-center gap-2 transition">
+                                <span class="material-symbols-outlined text-[18px]">content_copy</span>
+                                <span>Copiar Resumen</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-bysoft-950 text-slate-400 border-t border-bysoft-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-bysoft-800">
+                <div class="flex items-center gap-3.5">
+                    <svg class="w-10 h-10 logo-glow">
+                        <use href="#bysoft-emblem"></use>
+                    </svg>
+                    <div>
+                        <span class="font-brand text-2xl font-bold text-white tracking-wider">ByS<span
+                                class="text-sky-400">o</span>ft</span>
+                        <p class="text-xs font-mono text-slate-400">Ingeniería de Software, Plataformas Web & Procesos
+                            BPMN</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-6 text-xs font-medium text-slate-300">
+                    <a href="#soluciones" class="hover:text-sky-400 transition">Soluciones</a>
+                    <a href="#clientes" class="hover:text-sky-400 transition">Clientes</a>
+                    <a href="#casos-exito" class="hover:text-sky-400 transition">OptiMove & Casos</a>
+                    <a href="#ingenieria-procesos" class="hover:text-sky-400 transition">Procesos BPMN + SOP</a>
+                    <a href="#contacto" class="hover:text-sky-400 transition">Contacto</a>
+                </div>
+            </div>
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs gap-4">
+                <p>© 2026 BySoft Ingeniería Digital — Barranquilla, Colombia.</p>
+                <p class="font-mono text-slate-400">Ingeniería de Software & Estandarización Operativa</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Módulos JavaScript (Para entorno local / WSL) -->
+    <script src="js/main.js" defer></script>
+    <script src="js/demos.js" defer></script>
+
+    <!-- Motor de Respaldo Autónomo (Solo se activa si se previsualiza sin servidor externo) -->
+    <script>
+        window.addEventListener('load', function () {
+            if (typeof window.switchPortfolioTab === 'function') return;
+
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            function syncThemeIcon() {
+                if (!themeIcon) return;
+                const isDark = document.documentElement.classList.contains('dark');
+                themeIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            }
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark');
+                    syncThemeIcon();
+                });
+            }
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isHidden = mobileMenu.classList.toggle('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
+                    if (mobileMenuIcon) mobileMenuIcon.textContent = isHidden ? 'menu' : 'close';
+                });
+            }
+
+            const track = document.getElementById('client-carousel-track');
+            const slides = track ? Array.from(track.children) : [];
+            const prevBtn = document.getElementById('slider-prev');
+            const nextBtn = document.getElementById('slider-next');
+            const pauseBtn = document.getElementById('slider-pause');
+            const pauseIcon = document.getElementById('pause-icon');
+            const pauseText = document.getElementById('pause-text');
+            const dotsContainer = document.getElementById('slider-dots');
+
+            let currentSlideIndex = 0;
+            let isAutoPlaying = true;
+
+            function getVisibleCardsCount() {
+                if (window.innerWidth >= 1024) return 3;
+                if (window.innerWidth >= 768) return 2;
+                return 1;
+            }
+
+            function getMaxSlideIndex() {
+                return Math.max(0, slides.length - getVisibleCardsCount());
+            }
+
+            function renderSliderDots() {
+                if (!dotsContainer) return;
+                dotsContainer.innerHTML = '';
+                const maxIdx = getMaxSlideIndex();
+                for (let i = 0; i <= maxIdx; i++) {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = `h-2 rounded-full transition-all ${i === currentSlideIndex ? 'w-8 bg-sky-500' : 'w-2 bg-slate-300 dark:bg-bysoft-800 hover:bg-sky-400'}`;
+                    dot.addEventListener('click', () => {
+                        currentSlideIndex = i;
+                        updateSliderPosition();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            function updateSliderPosition() {
+                if (!track) return;
+                const maxIdx = getMaxSlideIndex();
+                if (currentSlideIndex > maxIdx) currentSlideIndex = 0;
+                if (currentSlideIndex < 0) currentSlideIndex = maxIdx;
+                const cardWidthPercent = 100 / getVisibleCardsCount();
+                track.style.transform = `translateX(-${currentSlideIndex * cardWidthPercent}%)`;
+                renderSliderDots();
+            }
+
+            if (nextBtn) nextBtn.addEventListener('click', () => { currentSlideIndex++; updateSliderPosition(); });
+            if (prevBtn) prevBtn.addEventListener('click', () => { currentSlideIndex--; updateSliderPosition(); });
+            if (pauseBtn) {
+                pauseBtn.addEventListener('click', () => {
+                    isAutoPlaying = !isAutoPlaying;
+                    if (pauseIcon) pauseIcon.textContent = isAutoPlaying ? 'pause' : 'play_arrow';
+                    if (pauseText) pauseText.textContent = isAutoPlaying ? 'Auto' : 'Pausado';
+                });
+            }
+
+            window.switchPortfolioTab = function (tab) {
+                const casosContent = document.getElementById('tab-content-casos');
+                const demosContent = document.getElementById('tab-content-demos');
+                const btnCasos = document.getElementById('tab-btn-casos');
+                const btnDemos = document.getElementById('tab-btn-demos');
+                const active = "px-4 py-2.5 rounded-lg font-brand font-bold text-xs uppercase tracking-wider transition bg-sky-600 text-white shadow-sm flex items-center gap-2";
+                const inactive = "px-4 py-2.5 rounded-lg font-brand font-bold text-xs uppercase tracking-wider transition text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-2";
+                if (tab === 'casos') {
+                    casosContent.classList.remove('hidden');
+                    demosContent.classList.add('hidden');
+                    btnCasos.className = active;
+                    btnDemos.className = inactive;
+                } else {
+                    demosContent.classList.remove('hidden');
+                    casosContent.classList.add('hidden');
+                    btnDemos.className = active;
+                    btnCasos.className = inactive;
+                }
+            };
+
+            function formatCOP(num) {
+                return '$' + Math.round(num).toLocaleString('es-CO');
+            }
+
+            window.calcularNominaDemo = function () {
+                const salario = parseFloat(document.getElementById('nomina-salario').value) || 1800000;
+                const horasExtras = parseInt(document.getElementById('nomina-extras').value) || 0;
+                document.getElementById('nomina-extras-val').textContent = `${horasExtras} hrs`;
+                const auxilio = salario <= 2850000 ? 200000 : 0;
+                const pagoExtras = (salario / 230) * 1.25 * horasExtras;
+                const deducciones = (salario + pagoExtras) * 0.08;
+                const prestaciones = (salario + auxilio + pagoExtras) * 0.2183;
+                const neto = salario + auxilio + pagoExtras - deducciones;
+                document.getElementById('out-auxilio').textContent = formatCOP(auxilio);
+                document.getElementById('out-extras').textContent = '+' + formatCOP(pagoExtras);
+                document.getElementById('out-deducciones').textContent = '-' + formatCOP(deducciones);
+                document.getElementById('out-prestaciones').textContent = formatCOP(prestaciones);
+                document.getElementById('out-neto').textContent = formatCOP(neto) + ' COP';
+            };
+
+            window.updateCommissionDemo = function () {
+                const sales = parseFloat(document.getElementById('comm-sales-slider').value);
+                const rate = parseFloat(document.getElementById('comm-rate-slider').value);
+                document.getElementById('comm-sales-label').textContent = formatCOP(sales) + ' COP';
+                document.getElementById('comm-rate-label').textContent = rate + '%';
+                const monthlyLoss = sales * (rate / 100);
+                document.getElementById('comm-month-loss').textContent = formatCOP(monthlyLoss);
+                document.getElementById('comm-year-save').textContent = formatCOP(monthlyLoss * 12);
+            };
+
+            window.updateWaSimulator = function () {
+                const rawItem = document.getElementById('wa-sim-item').value.split('|');
+                const zone = document.getElementById('wa-sim-zone').value;
+                document.getElementById('wa-ticket-preview').textContent = `ORDEN WEB ESTRUCTURADA - BYSOFT\n----------------------------------\nConcepto : ${rawItem[0]}\nValor    : ${rawItem[1]}\nUbicación: ${zone}\nEstado   : Datos verificados\n----------------------------------\nGenerado directamente desde la plataforma web.`;
+            };
+
+            syncThemeIcon();
+            updateSliderPosition();
+            window.calcularNominaDemo();
+            window.updateCommissionDemo();
+            window.updateWaSimulator();
+        });
+    </script>
+</body>
+
+</html>

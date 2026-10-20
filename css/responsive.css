@@ -1,0 +1,39 @@
+/*
+BySoft - Ingeniería de Software y Procesos
+Descripción: Ajustes para pantallas móviles, tablets y preferencias de accesibilidad.
+*/
+
+/* Ajustes para pantallas pequeñas (Móviles < 640px) */
+@media (max-width: 639px) {
+  .bg-engineering-grid {
+    background-size: 28px 28px;
+  }
+
+  #wa-ticket-preview {
+    font-size: 11px;
+    overflow-x: auto;
+  }
+}
+
+/* Ajustes para tablets (640px - 1023px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  #client-carousel-viewport {
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+  }
+}
+
+/* Accesibilidad: Respetar preferencia de reducción de movimiento del sistema */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
