@@ -43,3 +43,66 @@ textarea:focus-visible {
   outline: 2px solid var(--bysoft-400);
   outline-offset: 2px;
 }
+
+/* Accesos sociales flotantes */
+.social-float {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.social-float__link {
+  display: inline-flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 9999px;
+  color: #fff;
+  box-shadow: 0 8px 20px rgb(5 13 26 / 0.28);
+  transition: transform var(--transition-fast), filter var(--transition-fast), opacity var(--transition-fast);
+}
+
+.social-float__link:not(:disabled):hover {
+  transform: translateY(-2px) scale(1.04);
+  filter: brightness(1.1);
+}
+
+.social-float__link:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.social-float__link--whatsapp {
+  background: #25d366;
+}
+
+.social-float__link--instagram {
+  background: #c13584;
+}
+
+.social-float__link--facebook {
+  background: #1877f2;
+}
+
+.social-float__link svg {
+  width: 1.45rem;
+  height: 1.45rem;
+  fill: currentColor;
+}
+
+.social-float__link--instagram svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.social-float__link--instagram .social-float__icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
