@@ -1,6 +1,6 @@
 /**
  * BySoft - Ingeniería de Software y Procesos
- * Descripción: Control de pestañas del portafolio, muestra interactiva del motor matemático de OptiMove, calculadora de comisiones y simulador de tickets a WhatsApp.
+ * Descripción: Control de pestañas del portafolio, muestra interactiva del motor matemático de Nómina, calculadora de comisiones y simulador de tickets a WhatsApp.
  */
 
 /* ==========================================================================
@@ -36,7 +36,7 @@ function formatCOP(num) {
 }
 
 /* ==========================================================================
-   2. MUESTRA DEL MOTOR DE LIQUIDACIÓN (CASO OPTIMOVE)
+   2. MUESTRA DEL MOTOR DE LIQUIDACIÓN (CASO Nómina)
    ========================================================================== */
 function calcularNominaDemo() {
   const salarioInput = document.getElementById('nomina-salario');

@@ -185,7 +185,7 @@ function handleDiagnosticSubmit(e) {
     feedback.textContent = 'Solicitud preparada. Abriendo canal oficial de WhatsApp Business de BySoft...';
   }
 
-  const whatsappUrl = `https://wa.me/573000000000?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/573176890085?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 }
 
